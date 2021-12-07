@@ -20,9 +20,25 @@ function! fzf_bibtex#insert_citation_markdown(insert_mode, lines) abort
 endfunction
 
 function! fzf_bibtex#select_entries(insert_mode=0, prefix="", postfix="", separator=", ") abort
-	call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+	if !exists("*fzf#run")
+		echohl ErrorMsg | echomsg "Fzf.vim is not installed" | echohl NONE
+	elseif !executable('bibtex-ls')
+		echohl ErrorMsg | echomsg "Bibtex-ls is not installed" | echohl NONE
+	elseif !executable('bibtex-cite')
+		echohl ErrorMsg | echomsg "Bibtex-cite is not installed" | echohl NONE
+	else
+		call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+	endif
 endfunction
 
 function! fzf_bibtex#select_entries_markdown(insert_mode=0) abort
-	call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+	if !exists("*fzf#run")
+		echohl ErrorMsg | echomsg "Fzf.vim is not installed" | echohl NONE
+	elseif !executable('bibtex-ls')
+		echohl ErrorMsg | echomsg "Bibtex-ls is not installed" | echohl NONE
+	elseif !executable('bibtex-markdown')
+		echohl ErrorMsg | echomsg "Bibtex-markdown is not installed" | echohl NONE
+	else
+		call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+	endif
 endfunction
