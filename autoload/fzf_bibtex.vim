@@ -27,7 +27,8 @@ function! fzf_bibtex#select_entries(insert_mode=0, prefix="", postfix="", separa
 	elseif !executable('bibtex-cite')
 		echohl ErrorMsg | echomsg "Bibtex-cite is not installed" | echohl NONE
 	else
-		call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+		let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator])})
+		call fzf#run(fzf_params)
 	endif
 endfunction
 
@@ -39,6 +40,7 @@ function! fzf_bibtex#select_entries_markdown(insert_mode=0) abort
 	elseif !executable('bibtex-markdown')
 		echohl ErrorMsg | echomsg "Bibtex-markdown is not installed" | echohl NONE
 	else
-		call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+		let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode])})
+		call fzf#run(fzf_params)
 	endif
 endfunction
