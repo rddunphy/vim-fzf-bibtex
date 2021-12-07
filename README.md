@@ -2,6 +2,25 @@
 
 Commands for using [fzf-bibtex](https://github.com/msprev/fzf-bibtex) in Vim.
 
+## Installation and setup
+
+Install using your package manager - e.g. for
+[vim-plug](https://github.com/junegunn/vim-plug), add 
+`Plug 'rddunphy/vim-fzf-bibtex'` to your .vimrc.
+
+Requirements:
+* [fzf-bibtex](https://github.com/msprev/fzf-bibtex)
+* [fzf.vim](https://github.com/junegunn/fzf.vim)
+* [fzf](https://github.com/junegunn/fzf)
+
+Specify the a directory to use for the cache, and a colon-separated list of
+bibtex source files:
+
+```vim
+let $FZF_BIBTEX_CACHEDIR = 'path/to/cache/dir'
+let $FZF_BIBTEX_SOURCES = 'paths/to/bibtex/files'
+```
+
 ## Commands
 
 * `:FzfBibtex [pre] [post] [sep]` - Use Fzf to select citations and insert
