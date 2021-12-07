@@ -1,0 +1,77 @@
+*fzf_bibtex.txt* Commands for inserting Bibtex citations using Fzf
+
+==============================================================================
+Setup:~
+                                                            *fzf-bibtex-setup*
+
+Requires fzf-bibtex from https://github.com/msprev/fzf-bibtex. Specify a cache
+directory and source files using: >
+    let $FZF_BIBTEX_CACHEDIR = 'path/to/cache/dir'
+    let $FZF_BIBTEX_SOURCES = 'paths/to/bibtex/files'
+<
+
+==============================================================================
+Default mappings:~
+                                                         *fzf-bibtex-mappings*
+
+By default, the following normal mode mappings are provided for filetype=tex:
+
+    <localleader>cc -> :FzfBibtex ~\\cite{ }<CR>
+    <localleader>ct -> :FzfBibtex ~\\textcite{ }<CR>
+    <localleader>cy -> :FzfBibtex ~\\citeyear{ }<CR>
+    <localleader>ca -> :FzfBibtex ~\\citeauthor*{ }<CR>
+    <localleader>cp -> :FzfBibtex<CR>
+
+Corresponding insert mode mappings start with <c-z>:
+
+    <c-z><c-z> -> <c-g>u<c-o>:FzfBibtexInsert ~\\cite{ }<CR>
+    <c-z>t -> <c-g>u<c-o>:FzfBibtexInsert ~\\textcite{ }<CR>
+    <c-z>y -> <c-g>u<c-o>:FzfBibtexInsert ~\\citeyear{ }<CR>
+    <c-z>a -> <c-g>u<c-o>:FzfBibtexInsert ~\\citeauthor*{ }<CR>
+    <c-z>p -> <c-g>u<c-o>:FzfBibtexInsert<CR>
+
+For markdown files, the Pandoc citation style is used:
+
+    <c-z> -> <c-g>u<c-o>:FzfPandocInsert<CR>
+    <localleader>c -> :FzfPandoc<CR>
+
+To specify custom mappings, set 'g:fzf_bibtex_use_default_mappings' to 0.
+
+==============================================================================
+Commands:~
+
+                                                                  *:FzfBibtex*
+:FzfBibtex [pre] [post] [sep]
+                        Open Fzf to select citations, and insert selected
+                        citation keys, prefixed by [pre], postfixed by [post],
+                        and with multiple citations separated by [sep]. By
+                        default, [pre]="", [post]="", [sep]=", ".
+
+                                                            *:FzfBibtexInsert*
+:FzfBibtexInsert [pre] [post] [sep]
+                        Same as |FzfBibtexInsert|, but enter insert mode after
+                        inserting citations. Useful for insert mode bindings.
+
+                                                                   *:FzfLatex*
+:FzfLatex               Shorthand for :FzfBibtex ~\\cite{ }
+
+                                                             *:FzfLatexInsert*
+:FzfLatexInsert         Shorthand for :FzfBibtexInsert ~\\cite{ }
+
+                                                                  *:FzfPandoc*
+:FzfPandoc              Shorthand for :FzfBibtex @ "" "; @"
+
+                                                            *:FzfPandocInsert*
+:FzfPandocInsert        Shorthand for :FzfBibtexInsert @ "" "; @"
+
+
+==============================================================================
+Global variables:~
+
+                                         *'g:fzf_bibtex_use_default_mappings'*
+Use default mappings to insert citations. To use your own mappings, set this
+to 0. >
+    let g:help_helper_use_default_mappings = 1
+<
+
+==============================================================================
