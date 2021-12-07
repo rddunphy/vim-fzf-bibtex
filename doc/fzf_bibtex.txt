@@ -10,6 +10,8 @@ directory and source files using: >
     let $FZF_BIBTEX_SOURCES = 'paths/to/bibtex/files'
 <
 
+$FZF_BIBTEX_SOURCES can be a list of files separated by colons.
+
 ==============================================================================
 Default mappings:~
                                                          *fzf-bibtex-mappings*
@@ -49,7 +51,7 @@ Commands:~
 
                                                             *:FzfBibtexInsert*
 :FzfBibtexInsert [pre] [post] [sep]
-                        Same as |FzfBibtexInsert|, but enter insert mode after
+                        Same as |FzfBibtex|, but enter insert mode after
                         inserting citations. Useful for insert mode bindings.
 
                                                                    *:FzfLatex*
