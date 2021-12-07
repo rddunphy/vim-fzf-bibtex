@@ -18,24 +18,32 @@ Default mappings:~
 
 By default, the following normal mode mappings are provided for filetype=tex:
 
-    <localleader>cc -> :FzfBibtex ~\\cite{ }<CR>
-    <localleader>ct -> :FzfBibtex ~\\textcite{ }<CR>
-    <localleader>cy -> :FzfBibtex ~\\citeyear{ }<CR>
-    <localleader>ca -> :FzfBibtex ~\\citeauthor*{ }<CR>
-    <localleader>cp -> :FzfBibtex<CR>
+    <localleader>cc -> ~\cite{keys}
+    <localleader>ct -> ~\textcite{keys}
+    <localleader>cy -> ~\citeyear{keys}
+    <localleader>ca -> ~\citeauthor*{keys}
+    <localleader>ck -> comma-separated list of keys
+    <localleader>cm -> markdown summary
 
-Corresponding insert mode mappings start with <c-z>:
+Corresponding insert mode mappings start with <C-Z>:
 
-    <c-z><c-z> -> <c-g>u<c-o>:FzfBibtexInsert ~\\cite{ }<CR>
-    <c-z>t -> <c-g>u<c-o>:FzfBibtexInsert ~\\textcite{ }<CR>
-    <c-z>y -> <c-g>u<c-o>:FzfBibtexInsert ~\\citeyear{ }<CR>
-    <c-z>a -> <c-g>u<c-o>:FzfBibtexInsert ~\\citeauthor*{ }<CR>
-    <c-z>p -> <c-g>u<c-o>:FzfBibtexInsert<CR>
+    <C-Z><C-Z> or <C-Z>z -> ~\cite{keys}
+    <C-Z><C-T> or <C-Z>t -> ~\textcite{keys}
+    <C-Z><C-Y> or <C-Z>y -> ~\citeyear{keys}
+    <C-Z><C-A> or <C-Z>a -> ~\citeauthor*{keys}
+    <C-Z><C-K> or <C-Z>k -> comma-separated list of keys
+    <C-Z><C-M> or <C-Z>m -> markdown summary
 
-For markdown files, the Pandoc citation style is used:
+For other file types, mappings are defined for markdown summaries and for
+Pandoc citation keys:
 
-    <c-z> -> <c-g>u<c-o>:FzfPandocInsert<CR>
-    <localleader>c -> :FzfPandoc<CR>
+    <localleader>cc -> markdown summary
+    <localleader>cp -> pandoc keys
+
+Corresponding insert mode mappings start with <C-Z>:
+
+    <C-Z><C-Z> or <C-Z>z -> markdown summary
+    <C-Z><C-P> or <C-Z>p -> pandoc keys
 
 To specify custom mappings, set 'g:fzf_bibtex_use_default_mappings' to 0.
 
@@ -55,17 +63,24 @@ Commands:~
                         inserting citations. Useful for insert mode bindings.
 
                                                                    *:FzfLatex*
-:FzfLatex               Shorthand for :FzfBibtex ~\\cite{ }
+:FzfLatex               Shorthand for |:FzfBibtex| ~\\cite{ }
 
                                                              *:FzfLatexInsert*
-:FzfLatexInsert         Shorthand for :FzfBibtexInsert ~\\cite{ }
+:FzfLatexInsert         Shorthand for |:FzfBibtexInsert| ~\\cite{ }
 
                                                                   *:FzfPandoc*
-:FzfPandoc              Shorthand for :FzfBibtex @ "" "; @"
+:FzfPandoc              Shorthand for |:FzfBibtex| @ "" "; @"
 
                                                             *:FzfPandocInsert*
-:FzfPandocInsert        Shorthand for :FzfBibtexInsert @ "" "; @"
+:FzfPandocInsert        Shorthand for |:FzfBibtexInsert| @ "" "; @"
 
+                                                                *:FzfMarkdown*
+:FzfMarkdown            Insert a pretty-printed summary of the selected
+                        citations.
+
+                                                          *:FzfMarkdownInsert*
+:FzfMarkdownInsert      Same as |:FzfMarkdown|, but enter insert mode after
+                        inserting citations. Useful for insert mode bindings.
 
 ==============================================================================
 Global variables:~
@@ -73,7 +88,7 @@ Global variables:~
                                          *'g:fzf_bibtex_use_default_mappings'*
 Use default mappings to insert citations. To use your own mappings, set this
 to 0. >
-    let g:help_helper_use_default_mappings = 1
+    let g:fzf_bibtex_use_default_mappings = 0
 <
 
 ==============================================================================

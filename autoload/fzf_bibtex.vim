@@ -11,6 +11,18 @@ function! fzf_bibtex#insert_citation(insert_mode, prefix, postfix, separator, li
 	endif
 endfunction
 
-function! fzf_bibtex#select_entries(insert_mode, prefix="", postfix="", separator=", ") abort
+function! fzf_bibtex#insert_citation_markdown(insert_mode, lines) abort
+	let r = system("bibtex-markdown", a:lines)
+	execute ':normal! i' . r
+	if a:insert_mode
+		call feedkeys('a')
+	endif
+endfunction
+
+function! fzf_bibtex#select_entries(insert_mode=0, prefix="", postfix="", separator=", ") abort
 	call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+endfunction
+
+function! fzf_bibtex#select_entries_markdown(insert_mode=0) abort
+	call fzf#run({'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode]), 'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
 endfunction
