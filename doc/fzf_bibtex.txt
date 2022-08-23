@@ -23,32 +23,34 @@ DEFAULT MAPPINGS					   *fzf-bibtex-mappings*
 
 By default, the following normal mode mappings are provided for filetype=tex:
 
-	`<localleader>cc` -> `~\cite{keys}`
-	`<localleader>ct` -> `~\textcite{keys}`
-	`<localleader>cy` -> `~\citeyear{keys}`
-	`<localleader>ca` -> `~\citeauthor*{keys}`
-	`<localleader>ck` -> comma-separated list of keys
-	`<localleader>cm` -> markdown summary
+	<localleader>cc -> `~\cite{keys}`
+	<localleader>ct -> `\textcite{keys}`
+	<localleader>cy -> `\citeyear{keys}`
+	<localleader>ca -> `\citeauthor{keys}`
+	<localleader>cs -> `\citeauthor*{keys}`
+	<localleader>ck -> comma-separated list of keys
+	<localleader>cm -> markdown summary
 
-Corresponding insert mode mappings start with `<C-Z>`:
+Corresponding insert mode mappings start with CTRL-Z:
 
-	`<C-Z><C-Z>` or `<C-Z>z` -> `~\cite{keys}`
-	`<C-Z><C-T>` or `<C-Z>t` -> `~\textcite{keys}`
-	`<C-Z><C-Y>` or `<C-Z>y` -> `~\citeyear{keys}`
-	`<C-Z><C-A>` or `<C-Z>a` -> `~\citeauthor*{keys}`
-	`<C-Z><C-K>` or `<C-Z>k` -> comma-separated list of keys
-	`<C-Z><C-M>` or `<C-Z>m` -> markdown summary
+	CTRL-Z z or CTRL-Z CTRL-Z -> `~\cite{keys}`
+	CTRL-Z t or CTRL-Z CTRL-T -> `\textcite{keys}`
+	CTRL-Z y or CTRL-Z CTRL-Y -> `\citeyear{keys}`
+	CTRL-Z a or CTRL-Z CTRL-A -> `\citeauthor{keys}`
+	CTRL-Z s or CTRL-Z CTRL-S -> `\citeauthor*{keys}`
+	CTRL-Z k or CTRL-Z CTRL-K -> comma-separated list of keys
+	CTRL-Z m or CTRL-Z CTRL-M -> markdown summary
 
 For other file types, mappings are defined for markdown summaries and for
 Pandoc citation keys:
 
-	`<localleader>cc` -> markdown summary
-	`<localleader>cp` -> pandoc keys
+	<localleader>cc -> markdown summary
+	<localleader>cp -> pandoc keys
 
-Corresponding insert mode mappings start with `<C-Z>`:
+Corresponding insert mode mappings start with CTRL-Z:
 
-	`<C-Z><C-Z>` or `<C-Z>z` -> markdown summary
-	`<C-Z><C-P>` or `<C-Z>p` -> pandoc keys
+	CTRL-Z z or CTRL-Z CTRL-Z -> markdown summary
+	CTRL-Z p or CTRL-Z CTRL-P -> pandoc keys
 
 To specify custom mappings, set |'g:fzf_bibtex_use_default_mappings'| to 0.
 
@@ -88,7 +90,7 @@ COMMANDS						   *fzf-bibtex-commands*
 			inserting citations. Useful for insert mode bindings.
 
 ==============================================================================
-GLOBAL VARIABLES					    *fzf-bibtex-globals*
+CONFIGURATION					      *fzf-bibtex-configuration*
 
 					*'g:fzf_bibtex_use_default_mappings'*
 Use default mappings to insert citations. To use your own mappings, set this
