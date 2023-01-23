@@ -18,7 +18,7 @@ command! -nargs=0 FzfMarkdown :call fzf_bibtex#select_entries_markdown()
 command! -nargs=0 FzfMarkdownInsert :call fzf_bibtex#select_entries_markdown(1)
 
 let g:fzf_bibtex_use_default_mappings = get(g:, 'fzf_bibtex_use_default_mappings', 1)
-let g:fzf_bibtex_default_fzf_params = get(g:, 'fzf_bibtex_default_fzf_params', {'down': '40%', 'options': '--ansi --multi --prompt "Cite> "'})
+let g:fzf_bibtex_default_fzf_params = get(g:, 'fzf_bibtex_default_fzf_params', {'options': '--ansi --multi --prompt "Cite> "'})
 
 if g:fzf_bibtex_use_default_mappings ==# 1
 	autocmd FileType tex inoremap <silent><buffer> <c-z><c-z> <c-g>u<c-o>:FzfLatexInsert<CR>

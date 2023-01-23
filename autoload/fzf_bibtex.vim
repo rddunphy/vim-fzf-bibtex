@@ -21,26 +21,36 @@ endfunction
 
 function! fzf_bibtex#select_entries(insert_mode=0, prefix="", postfix="", separator=", ") abort
 	if !exists("*fzf#run")
-		echohl ErrorMsg | echomsg "Fzf.vim is not installed" | echohl NONE
+		echohl ErrorMsg | echomsg "Fzf is not installed" | echohl NONE
 	elseif !executable('bibtex-ls')
 		echohl ErrorMsg | echomsg "Bibtex-ls is not installed" | echohl NONE
 	elseif !executable('bibtex-cite')
 		echohl ErrorMsg | echomsg "Bibtex-cite is not installed" | echohl NONE
 	else
-		let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator])})
-		call fzf#run(fzf_params)
+		try  " If fzf.vim is installed use fzf#vim#grep, which will inherit fzf.vim's formatting option
+			let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator])})
+			call fzf#vim#grep('bibtex-ls', 0, fzf_params)
+		catch
+			let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation', [a:insert_mode, a:prefix, a:postfix, a:separator])})
+			call fzf#run(fzf_params)
+		endtry
 	endif
 endfunction
 
 function! fzf_bibtex#select_entries_markdown(insert_mode=0) abort
 	if !exists("*fzf#run")
-		echohl ErrorMsg | echomsg "Fzf.vim is not installed" | echohl NONE
+		echohl ErrorMsg | echomsg "Fzf is not installed" | echohl NONE
 	elseif !executable('bibtex-ls')
 		echohl ErrorMsg | echomsg "Bibtex-ls is not installed" | echohl NONE
 	elseif !executable('bibtex-markdown')
 		echohl ErrorMsg | echomsg "Bibtex-markdown is not installed" | echohl NONE
 	else
-		let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode])})
-		call fzf#run(fzf_params)
+		try  " If fzf.vim is installed use fzf#vim#grep, which will inherit fzf.vim's formatting option
+			let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode])})
+			call fzf#vim#grep('bibtex-ls', 0, fzf_params)
+		catch
+			let fzf_params = extend(g:fzf_bibtex_default_fzf_params, {'source': 'bibtex-ls', 'sink*': function('fzf_bibtex#insert_citation_markdown', [a:insert_mode])})
+			call fzf#run(fzf_params)
+		endtry
 	endif
 endfunction
