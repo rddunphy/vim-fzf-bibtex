@@ -8,14 +8,14 @@ if exists('g:loaded_fzf_bibtex') || &cp || v:version < 700
 endif
 let g:loaded_fzf_bibtex = 1
 
-command! -nargs=* FzfBibtex :call fzf_bibtex#select_entries(0, <f-args>)
-command! -nargs=* FzfBibtexInsert :call fzf_bibtex#select_entries(1, <f-args>)
-command! -nargs=0 FzfPandoc :call fzf_bibtex#select_entries(0, "@", "", "; @")
-command! -nargs=0 FzfPandocInsert :call fzf_bibtex#select_entries(1, "@", "", "; @")
-command! -nargs=0 FzfLatex :call fzf_bibtex#select_entries(0, "~\\cite{", "}")
-command! -nargs=0 FzfLatexInsert :call fzf_bibtex#select_entries(1, "~\\cite{", "}")
-command! -nargs=0 FzfMarkdown :call fzf_bibtex#select_entries_markdown()
-command! -nargs=0 FzfMarkdownInsert :call fzf_bibtex#select_entries_markdown(1)
+command! -nargs=* -bang FzfBibtex :call fzf_bibtex#select_entries(0, <bang>0, <f-args>)
+command! -nargs=* -bang FzfBibtexInsert :call fzf_bibtex#select_entries(1, <bang>0, <f-args>)
+command! -nargs=0 -bang FzfPandoc :call fzf_bibtex#select_entries(0, <bang>0, "@", "", "; @")
+command! -nargs=0 -bang FzfPandocInsert :call fzf_bibtex#select_entries(1, <bang>0, "@", "", "; @")
+command! -nargs=0 -bang FzfLatex :call fzf_bibtex#select_entries(0, <bang>0, "~\\cite{", "}")
+command! -nargs=0 -bang FzfLatexInsert :call fzf_bibtex#select_entries(1, <bang>0, "~\\cite{", "}")
+command! -nargs=0 -bang FzfMarkdown :call fzf_bibtex#select_entries_markdown(0, <bang>0)
+command! -nargs=0 -bang FzfMarkdownInsert :call fzf_bibtex#select_entries_markdown(1, <bang>0)
 
 let g:fzf_bibtex_use_default_mappings = get(g:, 'fzf_bibtex_use_default_mappings', 1)
 let g:fzf_bibtex_default_fzf_params = get(g:, 'fzf_bibtex_default_fzf_params', {'options': '--ansi --multi --prompt "Cite> "'})

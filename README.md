@@ -23,16 +23,18 @@ let $FZF_BIBTEX_SOURCES = 'paths/to/bibtex/files'
 
 ## Commands
 
-* `:FzfBibtex [pre] [post] [sep]` - Use Fzf to select citations and insert
+* `:FzfBibtex[!] [pre] [post] [sep]` - Use Fzf to select citations and insert
 	their keys as a comma-separated list. Optionally takes arguments for prefix,
 	postfix, and separators.
-* `:FzfPandoc` - Insert Pandoc-style citation keys.
-* `:FzfLatex` - Insert LaTeX-style citations with `~\cite{}`.
-* `:FzfMarkdown` - Insert pretty-printed summaries of citations.
+* `:FzfPandoc[!]` - Insert Pandoc-style citation keys.
+* `:FzfLatex[!]` - Insert LaTeX-style citations with `~\cite{}`.
+* `:FzfMarkdown[!]` - Insert pretty-printed summaries of citations.
 
 Each command has a version with with the postfix `Insert` (e.g.
 `:FzfBibtexInsert`), which returns to insert mode after inserting the
 citations.
+
+Appending an explamation mark to any command will open Fzf fullscreen.
 
 ## Default mappings
 

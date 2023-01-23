@@ -58,36 +58,38 @@ To specify custom mappings, set |'g:fzf_bibtex_use_default_mappings'| to 0.
 COMMANDS						   *fzf-bibtex-commands*
 
 						*:FzfBibtex*
-:FzfBibtex [pre] [post] [sep]
+:FzfBibtex[!] [pre] [post] [sep]
 			Open Fzf to select citations, and insert selected
 			citation keys, prefixed by [pre] (default `""`),
 			postfixed by [post] (default `""`), and with multiple 
 			citations separated by [sep] (default `", "`).
 
 						*:FzfBibtexInsert*
-:FzfBibtexInsert [pre] [post] [sep]
+:FzfBibtexInsert[!] [pre] [post] [sep]
 			Same as |:FzfBibtex|, but enter insert mode after
 			inserting citations. Useful for insert mode bindings.
 
 						*:FzfLatex*
-:FzfLatex		Shorthand for `:FzfBibtex ~\\cite{ }`
+:FzfLatex[!]		Shorthand for `:FzfBibtex ~\\cite{ }`
 
 						*:FzfLatexInsert*
-:FzfLatexInsert		Shorthand for `:FzfBibtexInsert ~\\cite{ }`
+:FzfLatexInsert[!]	Shorthand for `:FzfBibtexInsert ~\\cite{ }`
 
 						*:FzfPandoc*
-:FzfPandoc		Shorthand for `:FzfBibtex @ "" "; @"`
+:FzfPandoc[!]		Shorthand for `:FzfBibtex @ "" "; @"`
 
 						*:FzfPandocInsert*
-:FzfPandocInsert	Shorthand for `:FzfBibtexInsert @ "" "; @"`
+:FzfPandocInsert[!]	Shorthand for `:FzfBibtexInsert @ "" "; @"`
 
 						*:FzfMarkdown*
-:FzfMarkdown		Insert a pretty-printed summary of the selected
+:FzfMarkdown[!]		Insert a pretty-printed summary of the selected
 			citations.
 
 						*:FzfMarkdownInsert*
-:FzfMarkdownInsert	Same as |:FzfMarkdown|, but enter insert mode after
+:FzfMarkdownInsert[!]	Same as |:FzfMarkdown|, but enter insert mode after
 			inserting citations. Useful for insert mode bindings.
+
+Appending an explamation mark to any command will open Fzf fullscreen.
 
 ==============================================================================
 CONFIGURATION					      *fzf-bibtex-configuration*
