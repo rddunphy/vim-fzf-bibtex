@@ -10,6 +10,7 @@ Install using your package manager - e.g. for
 
 Requirements:
 * [fzf-bibtex](https://github.com/msprev/fzf-bibtex)
+* [bibtool](https://ctan.org/pkg/bibtool)
 * [fzf.vim](https://github.com/junegunn/fzf.vim)
 * [fzf](https://github.com/junegunn/fzf)
 
