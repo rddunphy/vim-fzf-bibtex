@@ -19,6 +19,9 @@ Specify a cache directory and source files using:
 <
 `$FZF_BIBTEX_SOURCES` can be a list of files separated by colons.
 
+If `$FZF_BIBTEX_CACHEDIR` is not specified, it defaults to
+`%APPDATA%\fzf-bibtex` on Windows, or `$HOME/.cache/fzf-bibtex` elsewhere.
+
 ==============================================================================
 DEFAULT MAPPINGS					   *fzf-bibtex-mappings*
 

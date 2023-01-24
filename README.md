@@ -22,6 +22,9 @@ let $FZF_BIBTEX_CACHEDIR = 'path/to/cache/dir'
 let $FZF_BIBTEX_SOURCES = 'paths/to/bibtex/files'
 ```
 
+If `$FZF_BIBTEX_CACHEDIR` is not specified, it defaults to
+`%APPDATA%\fzf-bibtex` on Windows, or `$HOME/.cache/fzf-bibtex` elsewhere.
+
 ## Commands
 
 * `:FzfBibtex[!] [pre] [post] [sep]` - Use Fzf to select citations and insert
