@@ -9,7 +9,6 @@ Requirements:
 
 	- `fzf-bibtex` from https://github.com/msprev/fzf-bibtex
 	- `bibtool` from https://ctan.org/pkg/bibtool
-	- `fzf.vim` from https://github.com/junegunn/fzf.vim
 	- `fzf` from https://github.com/junegunn/fzf
 
 Specify a cache directory and source files using:
