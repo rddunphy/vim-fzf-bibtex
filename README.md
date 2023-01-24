@@ -46,7 +46,8 @@ By default, the following normal mode mappings are provided for LaTeX files:
 * `<localleader>cc` &rarr; `~\cite{keys}`
 * `<localleader>ct` &rarr; `\textcite{keys}`
 * `<localleader>cy` &rarr; `\citeyear{keys}`
-* `<localleader>ca` &rarr; `\citeauthor*{keys}`
+* `<localleader>ca` &rarr; `\citeauthor{keys}`
+* `<localleader>cs` &rarr; `\citeauthor*{keys}`
 * `<localleader>ck` &rarr; comma-separated list of keys
 * `<localleader>cm` &rarr; markdown summary
 
@@ -55,7 +56,8 @@ Corresponding insert mode mappings start with `<C-Z>`:
 * `<C-Z><C-Z>` or `<C-Z>z` &rarr; `~\cite{keys}`
 * `<C-Z><C-T>` or `<C-Z>t` &rarr; `\textcite{keys}`
 * `<C-Z><C-Y>` or `<C-Z>y` &rarr; `\citeyear{keys}`
-* `<C-Z><C-A>` or `<C-Z>a` &rarr; `\citeauthor*{keys}`
+* `<C-Z><C-A>` or `<C-Z>a` &rarr; `\citeauthor{keys}`
+* `<C-Z><C-S>` or `<C-Z>s` &rarr; `\citeauthor*{keys}`
 * `<C-Z><C-K>` or `<C-Z>k` &rarr; comma-separated list of keys
 * `<C-Z><C-M>` or `<C-Z>m` &rarr; markdown summary
 
